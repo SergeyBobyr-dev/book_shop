@@ -5,7 +5,13 @@ const authMiddleware = require('../middleware/auth-check')
 const roleMiddleware = require('../middleware/role-check')
 
 
-router.post('/addrole', booksController.addBook)
+router.post('/addbook', booksController.addBook)
+router.get('/getbooks', booksController.getBooks)
+router.post('/editbook', booksController.editBook)
+router.post('/removebook', booksController.removeBook)
+
+router.post('/addcategories', booksController.addCategories)
+router.post('/addtype', booksController.addType)
 
 
 
