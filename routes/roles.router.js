@@ -6,7 +6,7 @@ const roleMiddleware = require('../middleware/role-check')
 
 
 
-router.post('/addrole', roleMiddleware, rolesController.addRole)
+router.post('/addrole', rolesController.addRole)
 router.post('/addapi', rolesController.addApi)
 router.post('/addactions', rolesController.addActions)
 

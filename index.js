@@ -13,7 +13,7 @@ app.use("/books", booksRouter)
 
 
 const start = async () => {
-        // await sequelize.sync({force: true})
+        await sequelize.sync({force: true })
         // await sequelize.sync({alter: true})
 
     try {
