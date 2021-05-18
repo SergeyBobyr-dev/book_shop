@@ -34,3 +34,9 @@ create TABLE apis(
 }
 
 ALTER TABLE users ALTER COLUMN cc TYPE char(60);
+
+
+
+  static associate(sequelize) {
+    this.belongsToMany(sequelize.Models.Role, { through: 'userroles' });
+  }
