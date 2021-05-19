@@ -208,7 +208,7 @@ module.exports = {
             key: 'id'
           }
       },
-      type: {
+      type_id: {
           type: DataTypes.INTEGER,
           allowNull: true,
           unique: false,

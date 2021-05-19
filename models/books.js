@@ -7,10 +7,18 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      
+     static associate(models) {
+      this.belongsTo(models.type, { 
+        foreignKey: 'type_id'
+       });
+      this.belongsTo(models.users, {
+        foreignKey: 'user_id' 
+      });
+      this.belongsTo(models.categories, { 
+        foreignKey: 'category_id' 
+      });
     }
-    
+  
     
   };
   Books.init({
@@ -52,7 +60,8 @@ module.exports = (sequelize, DataTypes) => {
         unique: false,
         references: {
           model: 'categories',
-          key: 'id'
+          key: 'id',
+          as: 'category_id'
         }
     },
     rate: {
@@ -71,16 +80,18 @@ module.exports = (sequelize, DataTypes) => {
         unique: false,
         references: {
           model: 'users',
-          key: 'id'
+          key: 'id',
+          as: 'user_id'
         }
     },
-    type: {
+    type_id: {
         type: DataTypes.INTEGER,
         allowNull: true,
         unique: false,
         references: {
           model: 'type',
-          key: 'id'
+          key: 'id',
+          as: 'type_id'
         }
     },
 
