@@ -7,13 +7,16 @@ const app = express()
 const {sequelize} = require('./models');
 
 app.use(express.json())
+app.use("/", (req, res) =>{
+    res.send("Hello")
+})
 app.use("/auth", authRouter)
 app.use("/roles", rolesRouter)
 app.use("/books", booksRouter)
 
 
 const start = async () => {
-        await sequelize.sync({force: true })
+        // await sequelize.sync({force: true })
         // await sequelize.sync({alter: true})
 
     try {
@@ -25,5 +28,3 @@ const start = async () => {
     }
 }
 start()
-
-

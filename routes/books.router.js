@@ -8,7 +8,7 @@ const roleMiddleware = require('../middleware/role-check')
 router.post('/addbook', booksController.addBook)
 router.get('/getbooks', booksController.getBooks)
 router.post('/editbook', booksController.editBook)
-router.post('/removebook', booksController.removeBook)
+router.post('/removebook/:id', booksController.removeBook)
 
 router.post('/addcategories', booksController.addCategories)
 router.post('/addtype', booksController.addType)

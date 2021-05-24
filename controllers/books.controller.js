@@ -1,5 +1,6 @@
 const dotenv = require('dotenv');
 const books = require('../models').books;
+const users = require('../models').users;
 const categories = require('../models').categories;
 const type = require('../models').type;
 dotenv.config();
@@ -13,10 +14,10 @@ class booksController {
 
     async addBook(req, res) {
         try {
-            const { name, author, description, year_of_production, price, category_id, rate, type } = req.body;
+            const { name, author, description, year_of_production, price, category_id, rate, user_id, type_id } = req.body;
 
             const newBook = await books.create({
-                name, author, description, year_of_production, price, category_id, rate, type
+                name, author, description, year_of_production, price, category_id, rate, user_id, type_id
             })
 
             res.json(newBook)
@@ -31,7 +32,7 @@ class booksController {
     async getBooks(req, res) {
 
         try {
-            const allBooks = await books.findAll()
+            const allBooks = await books.findAll({include: [users, type, categories]})
             res.json(allBooks)
         } catch (e) {
             console.log(e)
@@ -67,7 +68,7 @@ class booksController {
     async removeBook(req, res) {
 
         try {
-            const {id} = req.body
+            const id = req.params.id
             const removedBook = await books.destroy({where:{
                 id
               }})

@@ -10,7 +10,7 @@ router.post('/registration', authController.registration)
 router.post('/login', authController.login)
 router.get('/confirmation/:token',authController.authEmail)
 router.get('/confirmation/mobile',authController.authMobile)
-router.get('/users', roleMiddleware, authController.getUsers)
+router.get('/users', authController.getUsers)
 
 
 
