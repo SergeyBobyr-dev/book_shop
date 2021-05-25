@@ -1,18 +1,12 @@
 const express = require('express')
-const authRouter = require('./routes/auth.router')
-const rolesRouter = require('./routes/roles.router')
-const booksRouter = require('./routes/books.router')
+
+const routes = require('./routes');
 const PORT = process.env.PORT || 3000
 const app = express()
 const {sequelize} = require('./models');
 
 app.use(express.json())
-app.use("/", (req, res) =>{
-    res.send("Hello")
-})
-app.use("/auth", authRouter)
-app.use("/roles", rolesRouter)
-app.use("/books", booksRouter)
+app.use('/', routes);
 
 
 const start = async () => {

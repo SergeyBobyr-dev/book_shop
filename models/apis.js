@@ -21,13 +21,16 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: true,
-      unique: false
+      allowNull: false,
+      unique: true
     }
   }, {
     sequelize,
     tableName: 'apis',
     modelName: 'apis',
+    createdAt: false,
+    updatedAt: false
+
   });
   return Apis;
 };

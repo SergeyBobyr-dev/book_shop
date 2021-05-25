@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.books, { 
         foreignKey: 'user_id' 
       });
-      this.belongsTo(models.roles, {})
+      this.belongsTo(models.roles, {foreignKey: 'role_name'})
     }
   };
   Users.init({

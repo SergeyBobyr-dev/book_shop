@@ -25,7 +25,7 @@ class booksController {
 
         } catch (e) {
             console.log(e)
-            res.status(400).json({ message: 'Registration error' })
+            res.status(400).json({ message: 'something was wrong' })
         }
     }
 
@@ -69,10 +69,18 @@ class booksController {
 
         try {
             const id = req.params.id
-            const removedBook = await books.destroy({where:{
-                id
-              }})
-            res.json("book removed")
+            const removedBook = await books.findOne({
+                where: { id }
+            })
+            if(removedBook){
+                await books.destroy({where:{
+                    id
+                  }})
+                  res.json("book removed")
+            }else{
+                res.json("book not found")
+            }
+            
         } catch (e) {
             console.log(e)
             res.status(400).json(e.message)
@@ -88,6 +96,7 @@ class booksController {
             res.json(newCategory)
         }catch(e){
             console.log(e);
+            res.status(400).json({ message: 'something was wrong' })
         }
     }
 
@@ -100,6 +109,7 @@ class booksController {
             res.json(newType)
         }catch(e){
             console.log(e);
+            res.status(400).json({ message: 'something was wrong' })
         }
     }
 }

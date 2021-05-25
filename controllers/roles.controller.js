@@ -22,6 +22,7 @@ class rolesController{
             res.json(newRole)
         }catch(e){
             console.log(e);
+            res.status(400).json({ message: 'something was wrong' })
         }
     }
 
@@ -34,6 +35,7 @@ class rolesController{
             res.json(newApi)
         }catch(e){
             console.log(e);
+            res.status(400).json({ message: 'something was wrong' })
         }
     }
 
@@ -47,6 +49,7 @@ class rolesController{
 
         }catch(e){
             console.log(e)
+            res.status(400).json({ message: 'something was wrong' })
         }
     }
 
